@@ -8,8 +8,8 @@ sub main()
    set doc = activeDocument
    set pag = doc.pages(1)
 
-   dim rect1 As Shape
-   dim rect2 As Shape
+   dim rect1 as shape
+   dim rect2 as shape
 
    set rect1 = pag.drawRectangle(3, 4, 5, 3)
    set rect2 = pag.drawRectangle(3, 2, 5, 1)
