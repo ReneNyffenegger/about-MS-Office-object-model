@@ -31,7 +31,7 @@ end sub ' }
 
 sub testData() ' {
 
-    cells( 3, 4) = "colOne" : cells( 3, 5) = "colTwo" : cells( 4, 6) = "colThree"
+    cells( 3, 4) = "colOne" : cells( 3, 5) = "colTwo" : cells( 3, 6) = "colThree"
     cells( 4, 4) = "bar"    : cells( 4, 5) =      15  : cells( 4, 6) =        34
     cells( 5, 4) = "foo"    : cells( 5, 5) =      21  : cells( 5, 6) =        30
     cells( 6, 4) = "baz"    : cells( 6, 5) =      20  : cells( 6, 6) =        35
