@@ -21,4 +21,4 @@
 ' Microsoft XML
 '      MSXML6
 '      C:\windows\System32\msxml6.dll
-  call application.VBE.activeVBProject
+  call application.VBE.activeVBProject.references.addFromGuid("{F5078F18-C551-11D3-89B9-0000F81FE221}", 6, 0)
