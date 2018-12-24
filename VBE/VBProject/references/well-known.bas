@@ -22,3 +22,7 @@
 '      MSXML6
 '      C:\windows\System32\msxml6.dll
   call application.VBE.activeVBProject.references.addFromGuid("{F5078F18-C551-11D3-89B9-0000F81FE221}", 6, 0)
+
+' WinHTTP
+'     C:\windows\system32\winhttp.dll
+  call application.VBE.activeVBProject.references.addFromGuid("{662901fc-6951-4854-9eb2-d9a2570f2b2e}", 5, 1)
