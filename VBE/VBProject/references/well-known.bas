@@ -26,3 +26,7 @@
 ' WinHTTP
 '     C:\windows\system32\winhttp.dll
   call application.VBE.activeVBProject.references.addFromGuid("{662901fc-6951-4854-9eb2-d9a2570f2b2e}", 5, 1)
+
+' ADODB (Microsoft ActiveX Data Objects 6.1 Library)
+'     C:\Program Files (x86)\Common Files\System\ado\msado15.dll
+  call application.VBE.activeVBProject.references.addFromGuid("{B691E011-1797-432E-907A-4D8C69339129}", 6, 1)
