@@ -1,3 +1,7 @@
+' Microsoft Excel 15.0 Object Library
+'     Excel
+  call application.VBE.activeVBProject.references.addFromGuid("{00020813-0000-0000-C000-000000000046}", 1, 8)
+
 ' Microsoft VBScript Regular Expressions 5.5
 '      VBScript_RegExp_55
 '      C:\windows\SysWOW64\vbscript.dll\3
