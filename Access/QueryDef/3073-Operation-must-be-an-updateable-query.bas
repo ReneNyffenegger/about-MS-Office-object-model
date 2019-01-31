@@ -41,7 +41,7 @@ sub test_3073() ' {
    dim rs as dao.recordSet
    set rs = db.openRecordset("tab_3073")
    do while not rs.eof ' {
-      debug.print (rs!nr & " " & rs!txt)
+      debug.print (rs!nr & " " & rs!tx)
       rs.moveNext
    loop ' }
 
