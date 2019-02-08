@@ -2,12 +2,12 @@ option explicit
 
 sub main() ' {
 
-    if not currentDb.tableDefs("tq84_null_test") is nothing then
+    if not isNull(dLookup("Name", "MSysObjects", "Name='tq84_null_test'")) then
        doCmd.close acTable, "tq84_null_test", acSaveNo
        execSQL "drop table tq84_null_test"
     end if
 
-    execSQL "create table tq84_null_test(num number, txt char(20), dt date)"
+    execSQL "create table tq84_null_test(num number, txt varchar(20), dt date)"
 
     insertLiterally
     insertWithParameters
@@ -31,7 +31,7 @@ sub insertWithParameters() ' {
     set stmt = currentDB.createQueryDef("", _
       "parameters"                        & _
       "  num      number  ,"              & _
-      "  txt      char(20),"              & _
+      "  txt      varchar(20),"           & _
       "  dt       date    ;"              & _
       "insert into tq84_null_test (num, txt, dt) values([num], [txt], [dt])")
 
