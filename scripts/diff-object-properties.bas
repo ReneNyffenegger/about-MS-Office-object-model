@@ -8,6 +8,11 @@
 '
 '     call application.VBE.activeVBProject.references.addFromGuid("{8B217740-717D-11CE-AB5B-D41203C10000}", 1, 0)
 '
+' ---------------------------------------------------------------------------------------------------------------
+'
+'    https://renenyffenegger.ch/notes/Microsoft/Office/Object-Model/scripts/index
+'    https://github.com/ReneNyffenegger/about-MS-Office-object-model/blob/master/scripts/diff-object-properties.bas
+'
 
 option explicit
 
@@ -31,6 +36,8 @@ end sub ' }
 
 sub iterateOverOptions(fillDict as boolean) ' {
 
+    on error goto err_
+
     dim tlApp  as new tli.tliApplication
     dim tlInfo as     tli.typeInfo
 
@@ -41,29 +48,27 @@ sub iterateOverOptions(fillDict as boolean) ' {
     dim mbrInfo as tli.memberInfo
     for each mbrInfo in tlInfo.members ' {
 
-
-        if mbrInfo.descKind <> tli.desckind_funcDesc then
+        if mbrInfo.descKind <> tli.desckind_funcDesc then ' {
            debug.print "Unexpected desckind for " & mbrInfo.name
 '          goto skip
-        end if
+        end if ' }
 
-'       if mbrInfo.returnType.varType = tli.VT_EMPTY or mbrInfo.returnType.varType = tli.VT_NULL then
-'          debug.print "Skiping " & mbrInfo.name
+
+'       if mbrInfo.returnType = tli.vt_empty then ' {
+'          debug.print "Return type empty for " & mbrInfo.name
 '          goto skip
-'       end if
+'       end if '
 
-        if mbrInfo.name = "DefaultFilePath" or mbrInfo.name = "DefaultEPostageApp" or mbrInfo.name = "Entries" or mbrInfo.name = "FirstLetterExceptions" or mbrInfo.name = "TwoInitialCapsExceptions" or mbrInfo.name = "HangulAndAlphabetExceptions"  or mbrInfo.name = "OtherCorrectionsExceptions" then
-'          debug.print "Skiping " & mbrInfo.name
+
+        if hasMandatoryParameters(mbrInfo) then ' {
+'          debug.print mbrInfo.name " has mandatory parameters, skipping"
            goto skip
-        end if
+        end if ' }
 
-
-        if      mbrInfo.invokeKind = invoke_propertyGet then
+        if      mbrInfo.invokeKind = invoke_propertyGet then ' {
 
                 dim settingValue as variant
                 settingValue = callByName(obj, mbrInfo.name, vbGet)
-
-'               debug.print mbrInfo.name
 
                 if fillDict then
                    settings_.add mbrInfo.name, settingValue
@@ -76,18 +81,77 @@ sub iterateOverOptions(fillDict as boolean) ' {
 
                 end if
 
-        elseIf  mbrInfo.invokeKind = invoke_propertyPut then
-
-              '
-              ' Do nothing
-              '
-
-        else
-'               debug.print "Unexpected invokeKind for " & mbrInfo.name
-        end if
+'       elseIf  mbrInfo.invokeKind = invoke_propertyPut then
+        ' }
+        else ' {
+             '
+             ' Do nothing
+             '
+        end if' ' }
 
 skip:
 
     next mbrInfo ' }
 
+    exit sub
+
+err_:
+
+    if err.number = 5852 then                  ' Application-defined or object-defined error
+'      debug.print "5852 for " & mbrInfo.name  '   This error occurs for example when trying to access
+       resume next                             '   application.options.defaultEPostageApp in MS Word
+    end if                                     '
+
+    if err.number =  450 then                  ' Wrong number of arguments or invalid property assignment
+'      debug.print "450 for "  & mbrInfo.name  '   This error occurs for example when trying to access
+       resume next                             '   application.documents in MS Word
+    end if                                     '
+
+    if err.number =  509 then                  ' The  command is not available because the command is not available on this platform.
+'      debug.print "509 for "  & mbrInfo.name  '   This error occurs for example when trying to access
+       resume next                             '   application.wordBasic in MS Word
+    end if                                     '
+
+    if err.number =  438 then                  ' Object doesn't support this property or method
+'      debug.print "438 for "  & mbrInfo.name  '   This error occurs for example when trying to access
+       resume next                             '   application.system in MS Word
+    end if                                     '
+
+    if err.number = 5111 then                  ' Application-defined or object-defined error
+'      debug.print "5111 for " & mbrInfo.name  '   This error occurs for example when trying to access
+       resume next                             '   application.fileSearch in MS Word
+    end if                                     '
+
+    if err.number =   91 then                  ' Object variable or With block variable not set
+'      debug.print "  91 for " & mbrInfo.name  '   This error occurs for example when trying to access
+       resume next                             '   application.hangulHanjaDictionaries in MS Word
+    end if                                     '
+
+    if err.number =  440 then                  ' Automation error
+'      debug.print " 440 for " & mbrInfo.name  '   This error occurs for example when trying to access
+       resume next                             '   application.answerWizard in MS Word
+    end if                                     '
+
+    debug.print "Error: " & err.description & " (" & err.number & ")"
+    debug.print "       " & mbrInfo.name
+
+
 end sub ' }
+
+function hasMandatoryParameters(mbr as tli.memberInfo) as boolean
+
+'     hasMandatoryParameters = false
+
+      hasMandatoryParameters = (mbr.parameters.count <> mbr.parameters.defaultCount)
+
+'     dim par as tli.parameterInfo
+'     for each par in mbr.parameters ' {
+
+'         if not (par.flags and tli.paramFlag_fOpt) then
+'            hasMandatoryParameters = true
+'            exit function
+'         end if
+
+'     next par ' }
+
+end function ' }
