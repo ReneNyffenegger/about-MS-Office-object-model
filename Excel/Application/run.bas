@@ -5,18 +5,19 @@ sub main()
     dim subName as string
     subName = "subTwo"
 
-    application.run subName
+    application.run "runSub", "subTwo"
 
+end sub
+
+sub runSub(subName as string)
+    debug.print "runSub tries to run " & subName
+    application.run subName
 end sub
 
 sub subOne()
-    msgBox "sub one"
+    debug.print "subOne was called"
 end sub
 
 sub subTwo()
-    msgBox "sub two"
-end sub
-
-sub subThree()
-    msgBox "sub three"
+    debug.print "subTwo was called"
 end sub
