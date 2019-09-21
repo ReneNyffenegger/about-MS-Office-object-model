@@ -40,6 +40,10 @@
 '     C:\Program Files (x86)\Common Files\System\ado\msado15.dll
   call application.VBE.activeVBProject.references.addFromGuid("{B691E011-1797-432E-907A-4D8C69339129}", 6,  1)
 
+' ADOX (Microsoft ADO Ext. 6.0 for DDL and Security)
+'     C:\Program Files\Common Files\System\ado\msadox.dll
+  call application.VBE.activeVBProject.references.addFromGuid("{00000600-0000-0010-8000-00AA006D2EA4}", 6,  0)
+
 ' TLI (TypeLib Information)
 '     C:\windows\SysWow64\tlbinf32.dll
   call application.VBE.activeVBProject.references.addFromGuid("{8B217740-717D-11CE-AB5B-D41203C10000}", 1,  0)
