@@ -1,6 +1,3 @@
-'   ..\..\..\runVBAFilesInOffice.vbs -excel cells -c Main
-'
-
 public sub Main() ' {
 
     dim cur_worksheet as worksheet
@@ -25,4 +22,3 @@ public sub Main() ' {
     activeWorkbook.saved = true
 
 end sub ' }
-
