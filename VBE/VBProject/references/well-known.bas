@@ -1,11 +1,11 @@
 ' Microsoft Excel 15.0 Object Library
 '      Excel
+'      C:\Program Files\Microsoft Office\Root\Office16\EXCEL.EXE
   call application.VBE.activeVBProject.references.addFromGuid("{00020813-0000-0000-C000-000000000046}", 1,  8)
 
 ' Microsoft Word 16.0 Object Library
 '      Word
 '      C:\Program Files\Microsoft Office\Root\Office16\MSWORD.OLB
-
   call application.VBE.activeVBProject.references.addFromGuid("{00020905-0000-0000-C000-000000000046}", 8,  7)
 
 ' Microsoft PowerPoint 16.0 Object Library
