@@ -15,4 +15,3 @@ public sub main()
   activeWorkbook.saved = true
 
 end sub
-
