@@ -1,36 +1,33 @@
-'
-'   ..\..\..\runVBAFilesInOffice.vbs -excel lineStyle -c main
-'
-
 dim r as long
 public sub main() ' {
 
-    r = 1
+    r = 2
 
-    border(xlContinuous   )
-    border(xlDash         )
-    border(xlDashDot      )
-    border(xlDashDotDot   )
-    border(xlDot          )
-    border(xlDouble       )
-    border(xlLineStyleNone)
-    border(xlSlantDashDot )
+    drawBorders "xlContinuous"   , xlContinuous
+    drawBorders "xlDash"         , xlDash
+    drawBorders "xlDashDot"      , xlDashDot
+    drawBorders "xlDashDotDot"   , xlDashDotDot
+    drawBorders "xlDot"          , xlDot
+    drawBorders "xlDouble"       , xlDouble
+    drawBorders "xlLineStyleNone", xlLineStyleNone
+    drawBorders "xlSlantDashDot" , xlSlantDashDot
 
-
-    range( cells(1,1), cells(8,1) ).rowHeight = application.centimetersToPoints(2)
+    columns(1).columnWidth = 3
+    columns(2).autofit
 
     activeWorkbook.saved = true
 
 end sub ' }
 
-private sub border(style as xlLineStyle) ' {
+private sub drawBorders(name as string, style as xlLineStyle) ' {
 
-    dim b as border
+    dim cell as range
+    dim bord as border
 
-    set b = cells(r, 2).borders(xlEdgeLeft)
-    
-    b.lineStyle = style
+    set cell = cells(r, 2)
+    cell.borders.lineStyle = style
 
-    r = r+1
+    cell.value = name
+    r = r+2
 
 end sub ' }
