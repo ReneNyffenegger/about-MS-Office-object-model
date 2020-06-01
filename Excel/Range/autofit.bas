@@ -1,7 +1,3 @@
-'
-'   ..\..\..\runVBAFilesInOffice.vbs -excel autofit -c main
-'
-
 public sub main()
 
   for c = 1 to 20
