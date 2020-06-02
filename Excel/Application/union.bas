@@ -1,18 +1,14 @@
-'
-'   ..\..\..\runVBAFilesInOffice.vbs -excel union -c Go
-'
-'   See also -> intersect.bas
-'
+option explicit
 
-public sub Go()
+public sub main()
 
     dim range_1      as range
     dim range_2      as range
+
     dim range_result as range
 
-
-    set range_1 = activeSheet.range("f3:f9")
-    set range_2 = activeSheet.range("c6:k6")
+    set range_1 = activeSheet.range("d3:f9")
+    set range_2 = activeSheet.range("b6:h7")
 
     set range_result = union (range_1, range_2)
 
