@@ -1,16 +1,30 @@
-'
-'   ..\..\..\runVBAFilesInOffice.vbs -excel b3-e9 -c Go
-'
+option explicit
 
-public sub Go() ' {
+public sub main() ' {
 
-    col_start = 2  ' B
-    row_start = 3
+  '
+  ' Create range object for 3rd row, 2nd column
+  ' to 9th row, 5th column:
+  '
+    dim rng as range
+    set rng = range(    _
+       cells(3, 2),     _
+       cells(9, 5)      _
+    )
 
-    col_end   = 5  ' E
-    row_end   = 9
+  '
+  ' Use range object to modify some properties
+  ' of all cells that belong to the range:
+  '
+    rng.formula      = "=rand()"
+    rng.numberFormat = "0.000"
 
-    range(cells(row_start, col_start), cells(row_end, col_end)).formula = "=rand()"
+    with rng.font
+        .name = "Lucida Console"
+        .size =  10
+    end with
+
+    rng.columns.autoFit
 
     activeWorkbook.saved = true
 
