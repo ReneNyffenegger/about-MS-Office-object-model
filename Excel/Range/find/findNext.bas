@@ -100,4 +100,7 @@ sub testData() ' {
     cells(6, 1) = "foo"         : cells(6, 2) = "six"
     cells(7, 1) = "seven etc."  : cells(7, 2) = "foo"
 
+    columns(1).autoFit
+    columns(2).autoFit
+
 end sub ' }
