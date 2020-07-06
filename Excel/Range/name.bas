@@ -1,19 +1,16 @@
-'
-'   ..\..\..\runVBAFilesInOffice.vbs -excel name -c Go
-'
+option explicit
 
-public sub Go() ' {
+public sub main() ' {
 
-    range("b3:d6").name = "range_one"
-    range("e2:f8").name = "range_two"
+    range("b3:d6").name = "randomNumbers"
+    range("e2:f8").name = "foos"
 
-    range("range_one").formula = "=rand()"
-    range("range_one").interior.color = rgb(255, 140,  30)
+    range("randomNumbers").formula = "=rand()"
+    range("randomNumbers").interior.color = rgb(255, 140,  30)
 
-    range("range_two").value   = "two"
-    range("range_two").interior.color = rgb(215, 215, 215)
+    range("foos").value   = "foo"
+    range("foos").interior.color = rgb(145, 175, 255)
 
     activeWorkbook.saved = true
 
 end sub ' }
-
