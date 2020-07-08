@@ -1,8 +1,11 @@
+option explicit
+
 sub main()
 
   ' Define a range ...
   '
-    set rng = range("b2:e4")
+    dim rng as range
+    set rng =  range("b2:e4")
 
   ' and set each cell's value within the
   ' range to the same value:
@@ -11,7 +14,7 @@ sub main()
 
   ' Define another range...
   '
-    set rng = range("b6:d9")
+    set rng = range("b6:d6")
 
 
   ' and set the values of each column in
