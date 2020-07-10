@@ -1,11 +1,21 @@
-'
-'  ..\..\..\runVBAFilesInOffice.vbs -excel export -c export %cd%\..\..\..\Word\ObjectModel\InlineShapes\exported_chart.gif
-'
+option explicit
 
-public sub export(file_name as string)
+sub main() ' {
+
+   speedUp
+
+   dim chart_ as chart
+   set chart_ = createChart
+
+   call chart_.export(fileName := environ("temp") & "\exported-chart.png", filterName := "png")
+
+   slowDown
+
+end sub ' }
+
+private function createChart() as chart ' {
 
     dim row_   as integer
-    dim shape_ as shape
     dim chart_ as chart
 
     row_ = 1
@@ -13,23 +23,41 @@ public sub export(file_name as string)
     cells(1,1).value = "x"
     cells(1,2).value = "sin(x) * x/3 + x"
 
-    for x = 0 to 10 step 0.1
+    dim x as double
+    for x = 0 to 10 step 0.1 ' {
 
         row_ = row_ + 1
 
         cells(row_, 1).value = x
         cells(row_, 2).value = sin(x) * x / 3 + x 
 
-    next x
+    next x ' }
 
+    dim shape_ as shape
     set shape_ = activeSheet.shapes.addChart
-    set chart_ = shape_.chart
 
-    chart_.chartType = xlXYScatterSmoothNoMarkers
-    chart_.setSourceData source := range(cells(1,1), cells(row_, 2))
+    set createChart = shape_.chart
 
-    call chart_.export(fileName := file_name, filterName := "gif")
+    createChart.chartType = xlXYScatterSmoothNoMarkers
+    createChart.setSourceData source := range(cells(1,1), cells(row_, 2))
 
-    activeWorkbook.saved = true
 
-end sub
+end function ' }
+
+private sub speedUp() ' { 
+
+    application.screenUpdating    = false
+    application.calculation       = xlCalculationManual
+    application.enableEvents      = false
+    application.displayStatusBar  = false
+
+end sub ' }
+
+private sub slowDown() ' { 
+
+    application.screenUpdating    = true
+    application.calculation       = xlCalculationAutomatic
+    application.enableEvents      = true
+    application.displayStatusBar  = true
+
+end sub ' }
