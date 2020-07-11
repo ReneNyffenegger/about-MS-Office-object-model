@@ -7,7 +7,7 @@ sub main() ' {
    dim chart_ as chart
    set chart_ = createChart
 
-   call chart_.export(fileName := environ("temp") & "\exported-chart.png", filterName := "png")
+   call chart_.export(fileName := environ("temp") & "\export.png", filterName := "png")
 
    slowDown
 
