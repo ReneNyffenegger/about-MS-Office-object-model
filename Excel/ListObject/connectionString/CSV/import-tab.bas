@@ -23,7 +23,7 @@ sub main() ' {
         .commandText     = array("select * from [tab.csv]")
         .backgroundQuery = true
 
-        .refresh backgroundQuery:=False
+        .refresh backgroundQuery := false
 
     end With
 
