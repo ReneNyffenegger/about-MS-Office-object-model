@@ -1,19 +1,26 @@
-'
-'   ..\..\..\runVBAFilesInOffice.vbs -excel offset -c Go
-'
+option explicit
 
-public sub Go()
+public sub main()
+
+    activeSheet.usedRange.clearFormats
+    activeSheet.usedRange.clearContents
 
     dim range_orig   as range
     dim range_offset as range
 
-    set range_orig = range("d3:g6")
+    set range_orig = range(cells(4, 3), cells(5, 5))
 
-  ' New range: 1 downwards, 3 leftwards
-    set range_offset = range_orig.offset(1, 3)
+    with range_orig
+        .value = "Orig"
+        .font.color = rgb( 40, 220, 110)
+    end with
 
-    range_orig.value = "Orig"
+  ' New range: 1 upward, 2 leftward
+    set range_offset = range_orig.offset(-1, 2)
+
     range_offset.interior.color = rgb(255, 127, 30)
+
+    range_orig.offset(columnOffset := -1).borderAround xlContinuous, xlThick, color := rgb(30, 110, 240)
 
     activeWorkbook.saved = true
 
