@@ -1,42 +1,49 @@
-
-'
-'   ..\..\..\runVBAFilesInOffice.vbs -excel display -c main
-'
+option explicit
 
 public sub main()
 
-    dim w as window
-
-    set w = application.activeWindow
-
     cells(1,1).value = "=3+4"
-  ' Make formula visible
-    w.displayFormulas            = true
+    cells(2,1).value = 0
+    cells(3,1).value = 1
 
-    w.displayGridlines           = false
+    with application.activeWindow
+
+  ' Make formula visible ...
+   .displayFormulas            = true
+
+  ' ... but don't show formula bar.
+  '    (Note the application. here)
+  '
+    application.displayFormulaBar = false
+
+   .displayGridlines           = false
 
   ' let the column names (A ... ) and row numbers (1 ...)
   ' disappear
-    w.displayHeadings            = false
+   .displayHeadings            = false
 
   ' no scrollbars
-    w.displayHorizontalScrollbar = false
-    w.displayVerticalScrollbar   = false
+   .displayHorizontalScrollbar = false
+   .displayVerticalScrollbar   = false
+
+  ' If display ruler is false, the horizontal and
+  ' vertical rulers won't be displayed, irrespective
+  ' of their value
+   .displayRuler               = false
 
     range( cells(2,1), cells(5,1) ).rows.group
   ' dont show grouping symbols (aka «outline»).
-    w.displayOutline             = false
+   .displayOutline             = false
 
-    w.displayRightToLeft         = true
+   .displayRightToLeft         = false
 
-    w.displayRuler               = true
+   .displayWorkbookTabs        = false
 
-    w.displayWorkbookTabs        = false
+   .displayZeros               = false
 
-    cells(2,1).value = 0
-    cells(3,1).value = 1
-    w.displayZeros               = false
+    end with
 
-    activeWorkbook.saved         = true
+    application.width          = 200
+    application.height         = 160
 
 end sub
