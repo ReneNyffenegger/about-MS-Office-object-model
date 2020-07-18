@@ -107,37 +107,3 @@ sub createSourceWorksheet(fileName as string) ' {
     end with ' }
 
 end sub ' }
-
-
-#if 0 then
-
-Sub Macro4()
-'
-' Macro4 Macro
-'
-
-'
-    Application.CutCopyMode = False
-    With ActiveSheet.ListObjects.Add(SourceType:=0, Source:=Array( _
-        "OLEDB;provider=Microsoft.ACE.OLEDB.16.0;data source=C:\Users\r.nyffenegger\github\temp\Excel\object-model\connections-\workbook-with-d" _
-        , "ata-range.xlsx;extended properties=""excel 12.0;hdr=yes"""), Destination:= _
-        Range("$M$12")).QueryTable
-        .CommandType = xlCmdSql
-        .CommandText = Array("select * from [rngData]")
-        .RowNumbers = False
-        .FillAdjacentFormulas = False
-        .PreserveFormatting = True
-        .RefreshOnFileOpen = False
-        .BackgroundQuery = True
-        .RefreshStyle = xlInsertDeleteCells
-        .SavePassword = False
-        .SaveData = True
-        .AdjustColumnWidth = True
-        .RefreshPeriod = 0
-        .PreserveColumnInfo = True
-        .ListObject.DisplayName = "Table_ExternalData_1"
-        .Refresh BackgroundQuery:=False
-    End With
-End Sub
-
-#end if
