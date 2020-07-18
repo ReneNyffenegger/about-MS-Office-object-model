@@ -58,7 +58,7 @@ sub insertListObjectWith( source as string, sqlStatement as string, destCell as 
 
     end with ' }
 
-end sub ' {
+end sub ' }
 
 sub createSourceWorksheet(fileName as string) ' {
 
