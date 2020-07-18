@@ -10,14 +10,14 @@ sub main() ' {
 
     createSourceWorksheet pathToSourceWorkbook
 
-    insertListObjectWith  _
+    insertListObject  _
        source       :=  "OLEDB;provider=Microsoft.ACE.OLEDB.16.0;data source=" & pathToSourceWorkbook & ";extended properties=""excel 12.0;hdr=yes""", _
        sqlStatement :=  "select [Col two], [Col three] from [srcTable] where [Col one] = 'Baz'" , _
        destCell     := cells(2,2)
 
 end sub ' }
 
-sub insertListObjectWith( source as string, sqlStatement as string, destCell as range) ' {
+sub insertListObject( source as string, sqlStatement as string, destCell as range) ' {
 
     dim listObj as listObject
 
