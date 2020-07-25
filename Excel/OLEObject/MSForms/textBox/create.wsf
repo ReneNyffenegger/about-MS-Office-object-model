@@ -1,0 +1,26 @@
+<job>
+<script language="VBScript" src="..\..\..\..\VBS-MS-Office-App-Creator\create-MS-Office-app.vbs" />
+<script language="VBScript">
+
+   option explicit
+
+   dim app
+   dim xls
+   set xls = createOfficeApp("excel", currentDir() & "created.xlsm")
+   set app = xls.application
+
+'
+'  Microsoft Forms 2.0 Object Library
+'
+   addReference app, "{0D452EE1-E08F-101A-852E-02608C4D0BB4}", 2, 0
+
+   insertModule app, currentDir() & "functions.bas", "funcs"               , 1
+   insertModule app, currentDir() & "sheet1.bas"   , xls.sheets(1).codeName, 1
+
+   app.run "main"
+
+   xls.save
+
+   wscript.echo "The end."
+
+</script> </job>
