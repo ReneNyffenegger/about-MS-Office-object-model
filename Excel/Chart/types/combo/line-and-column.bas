@@ -2,11 +2,11 @@ option explicit
 
 sub main() ' {
 
-    dim dataAll, dataValues, dataCategoryNames as range
+    dim dataAll as range, dataValues as range, dataCategoryNames as range
     set dataAll = testData
 
     set dataValues        = application.intersect(dataAll, dataAll.offset(0,1))
-    set dataCategoryNames = dataValues.offset(0, -1).resize(columnSize := 1)
+    set dataCategoryNames = application.intersect(dataAll, dataAll.offset(1,0)).resize(columnSize := 1)
 
   '
   '     Although this example is going to create a combo chart,
