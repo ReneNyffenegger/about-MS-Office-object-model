@@ -50,6 +50,10 @@
 '     C:\Program Files\Common Files\System\ado\msadox.dll
   call application.VBE.activeVBProject.references.addFromGuid("{00000600-0000-0010-8000-00AA006D2EA4}", 6,  0)
 
+' Microsoft DAO 3.6 Object Library
+'     C:\Program Files (x86)\Common Files\Microsoft Shared\DAO\dao360.dll
+  call application.VBE.activeVBProject.references.addFromGuid("{00025E01-0000-0000-C000-000000000046}", 5,  0)
+
 ' TLI (TypeLib Information)
 '     C:\windows\SysWow64\tlbinf32.dll
   call application.VBE.activeVBProject.references.addFromGuid("{8B217740-717D-11CE-AB5B-D41203C10000}", 1,  0)
