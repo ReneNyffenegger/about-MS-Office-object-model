@@ -50,9 +50,13 @@
 '     C:\Program Files\Common Files\System\ado\msadox.dll
   call application.VBE.activeVBProject.references.addFromGuid("{00000600-0000-0010-8000-00AA006D2EA4}", 6,  0)
 
-' Microsoft DAO 3.6 Object Library
+' Microsoft DAO 3.6 Object Library (DAO, compare with ACEDAO, below)
 '     C:\Program Files (x86)\Common Files\Microsoft Shared\DAO\dao360.dll
   call application.VBE.activeVBProject.references.addFromGuid("{00025E01-0000-0000-C000-000000000046}", 5,  0)
+
+' Microsoft Office 16.0 Access database engine Object Library (ACEDAO, compare with DAO, above)
+'     C:\Program Files (x86)\Common Files\Microsoft Shared\OFFICE16\ACEDAO.DLL
+  call application.VBE.activeVBProject.references.addFromGuid("{4AC9E1DA-5BAD-4AC7-86E3-24F4CDCECA28}", 12,  0)
 
 ' TLI (TypeLib Information)
 '     C:\windows\SysWow64\tlbinf32.dll
