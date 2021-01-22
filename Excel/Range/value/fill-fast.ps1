@@ -3,7 +3,7 @@ $xls = new-object -com excel.application
 $xls.visible = $true
 
 $wb  = $xls.workbooks.add()
-$sh  = $wb.Worksheets.add()
+$sh  = $wb.worksheets.add()
 
 
 (measure-command {
