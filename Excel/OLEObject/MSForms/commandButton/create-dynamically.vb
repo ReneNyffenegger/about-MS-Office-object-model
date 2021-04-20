@@ -1,6 +1,3 @@
-'
-'
-'
 option explicit
 
 sub main() ' {
@@ -33,10 +30,11 @@ sub addButton( _
 
     dim line as long
     with thisWorkbook.vbProject.vbComponents(rng.parent.codeName).codeModule ' {
-         line = .countOfLines
-        .insertLines line + 1, "sub " & btn.name & "_click()"
-        .insertLines line + 2, "  " & action
-        .insertLines line + 3, "end sub"
+         line = .countOfLines                                    : line = line + 1
+        .insertLines line, "sub " & btn.name & "_click()"        : line = line + 1
+        .insertLines line, "  " & action                         : line = line + 1
+        .insertLines line, "  sheets(""" & rng.parent.name & """).oleObjects(""" & btn.name & """).object.backColor = rgb(rnd(1)*256, rnd(1)*256, rnd(1)*256)"  : line = line+1
+        .insertLines line, "end sub"
     end with ' }
 
 
