@@ -13,6 +13,11 @@
 '      C:\Program Files\Microsoft Office\Root\Office16\MSPPT.OLB
   call application.VBE.activeVBProject.references.addFromGuid("{91493440-5A91-11CF-8700-00AA0060263B}", 2, 12)
 
+' Microsoft Outlook 16.0 Object Library
+'      Outlook
+'      C:\Program Files (x86)\Microsoft Office\root\Office16\MSOUTL.OLB
+  call application.VBE.activeVBProject.references.addFromGuid("{00062FFF-0000-0000-C000-000000000046}", 9,  6)
+
 ' Microsoft VBScript Regular Expressions 5.5
 '      VBScript_RegExp_55
 '      C:\windows\SysWOW64\vbscript.dll\3
