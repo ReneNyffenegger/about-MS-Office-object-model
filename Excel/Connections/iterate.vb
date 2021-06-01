@@ -32,7 +32,11 @@ sub t
                debug.print ""
 
         elseif conn.type = xlConnectionTypeXMLMAP then
-               debug.print "  " & conn.ranges(1).address
+
+               dim rng as range
+               set rng = conn.ranges(1)
+
+               debug.print "  " & rng.parent.name & "!" & rng.address
                debug.print ""
 
         end if
