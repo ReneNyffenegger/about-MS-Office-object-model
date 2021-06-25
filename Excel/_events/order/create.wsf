@@ -1,0 +1,43 @@
+<job>
+<script language="VBScript" src="..\..\..\TF\DWH_DM_RISKFINANCE\lib\VBA\VBScript-App-Creator\create-MS-Office-App.vbs" />
+<script language="VBScript">
+
+   option explicit
+
+   createWorkbook "wbOne.xlsm", "abc", "def"
+   createWorkbook "wbTwo.xlsm", "uvw", "xyz"
+
+   sub createWorkbook(name, shName1, shName2)
+
+       dim wb
+       set wb = createOfficeApp("excel", currentDir() & name)
+
+       dim app
+       set app = wb.application
+
+       if wb is nothing then ' {
+          wscript.echo("Could not create excel worksheet.")
+          wscript.quit(-1)
+       end if ' }
+
+
+       wscript.echo "typename(app) = " & typename(app)
+       wscript.echo "typename(wb ) = " & typename(wb )
+
+       dim sh_abc
+       set sh_abc = insertSheet(wb, shName1, "sh" & shName1)
+
+       dim sh_def
+       set sh_abc = insertSheet(wb, shName2, "sh" & shName2)
+
+       insertModule app, currentDir() & "worksheetModule.vb", "sh" & shName1, 1
+       insertModule app, currentDir() & "worksheetModule.vb", "sh" & shName2, 1
+       insertModule app, currentDir() & "workbookModule.vb" , "thisWorkbook", 1
+       insertModule app, currentDir() & "func.vb"           , "func"        , 1
+
+       wb.save
+       app.quit
+
+   end sub
+
+</script></job>
