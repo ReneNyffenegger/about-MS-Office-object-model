@@ -1,5 +1,5 @@
 <job>
-<script language="VBScript" src="..\..\..\TF\DWH_DM_RISKFINANCE\lib\VBA\VBScript-App-Creator\create-MS-Office-App.vbs" />
+<script language="VBScript" src="create-MS-Office-App.vbs" />
 <script language="VBScript">
 
    option explicit
