@@ -1,6 +1,3 @@
-'
-'  Inspired by (and mostly copied from) https://stackoverflow.com/a/43619770/180275
-'
 option explicit
 
 sub main() ' {
