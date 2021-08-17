@@ -31,7 +31,8 @@ end sub ' }
 sub highlightNonNumbersInRange(rng as range) ' {
 
     dim formula as string
-    formula = "=not(isNumber(" & rng.cells(1).address(rowAbsolute := false, columnAbsolute := false) & "))"
+'   formula = "=not(isNumber(" & rng.cells(1).address(rowAbsolute := false, columnAbsolute := false) & "))"
+    formula = "=not(isNumber(r[0]c[0]))"
 
     dim fc as formatCondition
 
