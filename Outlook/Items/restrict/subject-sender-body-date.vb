@@ -24,8 +24,9 @@ sub src()
     for each itm in fnd
         debug.print
         debug.print itm.subject
-        debug.print "  From: " & itm.sender.name
-        debug.print "  Sent: " & itm.creationTime
+        debug.print "  From    : " & itm.sender.name
+        debug.print "  Sent    : " & itm.creationTime
+        debug.print "  Entry ID: " & itm.entryId
     next
 
 end sub
