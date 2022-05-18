@@ -16,6 +16,11 @@ sub src()
     filter = filter & " and urn:schemas:httpmail:sendername       like '%mayer%'"
     filter = filter & " and urn:schemas:httpmail:textdescription  like '%kindly remind%'"
     filter = filter & " and urn:schemas:httpmail:date > ' " & format$(#2021-10-02#, "general date") & "'"
+ '
+ ' The following filter does not seem to work:
+ '  filter = filter & " and urn:schemas:httpmail:hasAttachment = 1"
+ ' Neither this one:
+ '  filter = filter & " and urn:schemas:httpmail:attachmentFilename like '%sql'"
 
     set fnd = fld.items.restrict(filter)
 
