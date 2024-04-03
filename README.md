@@ -7,4 +7,4 @@ See
   - [Access](https://renenyffenegger.ch/notes/Microsoft/Office/Access/Object-Model)
   - Visio
   - [Outlook](https://renenyffenegger.ch/notes/Microsoft/Office/Outlook/Object-Model)
-  - [VBE](Microsoft/Office/Visual-Basic-Editor/Object-Model/)
+  - [VBE](https://renenyffenegger.ch/notes/Microsoft/Office/Visual-Basic-Editor/Object-Model)
