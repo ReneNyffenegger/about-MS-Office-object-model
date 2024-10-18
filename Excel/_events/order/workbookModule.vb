@@ -1,6 +1,6 @@
 option explicit
 
-private Sub workbook_open()
+private sub workbook_open()
     evt "workbook_open"            , me.name
 end sub
 
@@ -18,6 +18,14 @@ end sub
 
 private sub workbook_WindowResize(byVal wn as window)
     evt "workbook_windowResize"    ,  wn.activeSheet.name & " - " & wn.width & "x" & wn.height & " @ " & wn.top & "," &wn.left
+end sub
+
+private sub workbook_sheetActivate(byVal sh as object)
+    evt "workbook_sheetActivate" , sh.name
+end sub
+
+private sub workbook_sheetDeactivate(byVal sh as object)
+    evt "workbook_sheetDeactivate" , sh.name
 end sub
 
 private sub workbook_deactivate()
